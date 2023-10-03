@@ -1,0 +1,3 @@
+- criar camada de repository para users
+- achar tipagem correta para o retorno das funções de crud do prisma
+- finalizar o crud de usuários
