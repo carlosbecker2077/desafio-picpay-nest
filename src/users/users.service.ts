@@ -10,22 +10,23 @@ export class UsersService {
     private readonly usersRepository: IUsersRepository,
   ) {}
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    return this.usersRepository.create(createUserDto);
   }
 
   findAll() {
-    return `This action returns all users`;
+    console.log('service');
+    return this.usersRepository.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(userId: string) {
+    return this.usersRepository.findOne(userId);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(userId: string, updateUserDto: UpdateUserDto) {
+    return this.usersRepository.update(userId, updateUserDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  remove(userId: string) {
+    return this.usersRepository.remove(userId);
   }
 }
