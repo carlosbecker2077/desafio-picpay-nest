@@ -1,7 +1,9 @@
 import { Users } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { IUsersRepository } from './interfaces/IUserRepository';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class UserRepository implements IUsersRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
@@ -10,12 +12,10 @@ export class UserRepository implements IUsersRepository {
   }
 
   async findAll(): Promise<Users[]> {
-    const users = await this.prismaService.users.findMany();
-    return users;
+    return await this.prismaService.users.findMany();
   }
 
   async findOne(userId: string): Promise<Users> {
-    console.log(this.prismaService);
     return await this.prismaService.users.findUniqueOrThrow({
       where: { userId },
     });

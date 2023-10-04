@@ -22,7 +22,6 @@ export class UsersController {
 
   @Get()
   findAll() {
-    console.log('controller');
     return this.usersService.findAll();
   }
 

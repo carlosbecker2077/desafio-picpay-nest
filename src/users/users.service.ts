@@ -14,7 +14,6 @@ export class UsersService {
   }
 
   findAll() {
-    console.log('service');
     return this.usersRepository.findAll();
   }
 
