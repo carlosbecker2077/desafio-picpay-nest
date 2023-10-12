@@ -2,15 +2,18 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUsersRepository } from 'src/infra/repositories/interfaces/IUserRepository';
+import { UserHelper } from './helpers/UserHelper';
 
 @Injectable()
 export class UsersService {
   constructor(
     @Inject(IUsersRepository)
     private readonly usersRepository: IUsersRepository,
-  ) {}
-  create(createUserDto: CreateUserDto) {
-    return this.usersRepository.create(createUserDto);
+    @Inject(UserHelper) private readonly userHelper: UserHelper,
+  ) { }
+  async create(createUserDto: CreateUserDto) {
+    const data = await this.userHelper.userObjectBuilder(createUserDto);
+    return this.usersRepository.create(data);
   }
 
   findAll() {
@@ -28,4 +31,5 @@ export class UsersService {
   remove(userId: string) {
     return this.usersRepository.remove(userId);
   }
+
 }

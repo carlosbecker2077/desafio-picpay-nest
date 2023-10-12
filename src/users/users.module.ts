@@ -3,12 +3,16 @@ import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { IUsersRepository } from 'src/infra/repositories/interfaces/IUserRepository';
 import { UserRepository } from 'src/infra/repositories/UsersRepository';
+import { IPasswordHasher } from 'src/utils/interfaces/IPasswordHasher';
+import { PasswordHashing } from 'src/utils/PasswordHasher';
+import { UserHelper } from './helpers/UserHelper';
 
 @Module({
   controllers: [UsersController],
   providers: [
     UsersService,
-    { provide: IUsersRepository, useClass: UserRepository },
+    UserHelper,
+    { provide: IUsersRepository, useClass: UserRepository }, { provide: IPasswordHasher, useClass: PasswordHashing },
   ],
 })
-export class UsersModule {}
+export class UsersModule { }
