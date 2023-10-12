@@ -10,9 +10,16 @@
 [x] tipar os todos os retornos de metodos
 [x] criar um filter de erros para a aplicação
 [x] criar um filter de erros para o prisma
-[] adicionar validação de classe na criação e atualização
+[x] adicionar validação de classe na criação e atualização
 [] adicionar validação no fluxo de cadastro do usuario
 [] adicionar validação no fluxo de atualização do usuário
-[] adicionar compressão
-[] desabilitar o powered by
-
+[x] adicionar compressão
+[x] desabilitar o powered by
+[] ver pq não da mais pra atualizar o usuario (coisa com o class validator)
+[] criar rota para transferir dinheiro entre os usuarios
+    [] criar repository de transação
+        [] acho que pode ser legal criar um crud só pra ter
+    [] quem ta mandando não pode ser lojista
+    [] tem que ter saldo
+    [] precisa subtrair de quem ta mandando e adicionar em quem ta recebendo
+    [] e gravar a transação com essas informações na tabela de transações
