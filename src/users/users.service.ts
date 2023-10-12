@@ -3,6 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUsersRepository } from 'src/infra/repositories/interfaces/IUserRepository';
 import { UserHelper } from './helpers/UserHelper';
+import { ResponseUserDto } from './dto/response-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -11,24 +12,24 @@ export class UsersService {
     private readonly usersRepository: IUsersRepository,
     @Inject(UserHelper) private readonly userHelper: UserHelper,
   ) { }
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto): Promise<ResponseUserDto> {
     const data = await this.userHelper.userObjectBuilder(createUserDto);
-    return this.usersRepository.create(data);
+    return await this.usersRepository.create(data);
   }
 
-  findAll() {
+  findAll(): Promise<ResponseUserDto[]> {
     return this.usersRepository.findAll();
   }
 
-  findOne(userId: string) {
+  findOne(userId: string): Promise<ResponseUserDto> {
     return this.usersRepository.findOne(userId);
   }
 
-  update(userId: string, updateUserDto: UpdateUserDto) {
+  update(userId: string, updateUserDto: UpdateUserDto): Promise<ResponseUserDto> {
     return this.usersRepository.update(userId, updateUserDto);
   }
 
-  remove(userId: string) {
+  remove(userId: string): Promise<ResponseUserDto> {
     return this.usersRepository.remove(userId);
   }
 

@@ -6,8 +6,13 @@
 [x] ajustar o update para não deixar atualizar o userId, createdDate, updatedDate, document
 [x] criar o password hasher
 [x] hashear a senha do usuario na criação e atualização
-[] criar uma interface para o user service
-[] tipar os todos os retornos de metodos
-[] criar um filter de erros para a aplicação
-[] criar um filter de erros para o prisma
+[x] criar uma interface para o user service
+[x] tipar os todos os retornos de metodos
+[x] criar um filter de erros para a aplicação
+[x] criar um filter de erros para o prisma
 [] adicionar validação de classe na criação e atualização
+[] adicionar validação no fluxo de cadastro do usuario
+[] adicionar validação no fluxo de atualização do usuário
+[] adicionar compressão
+[] desabilitar o powered by
+

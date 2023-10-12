@@ -8,8 +8,9 @@ import { ResponseUserDto } from 'src/users/dto/response-user.dto';
 export class UserRepository implements IUsersRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async create(data: Users): Promise<Users> {
-    return await this.prismaService.users.create({ data });
+  async create(data: Users): Promise<ResponseUserDto> {
+    const createdUser: ResponseUserDto = await this.prismaService.users.create({ data });
+    return createdUser;
   }
 
   async findAll(): Promise<ResponseUserDto[]> {
@@ -56,9 +57,10 @@ export class UserRepository implements IUsersRepository {
     return user;
   }
 
-  async remove(userId: string): Promise<Users> {
-    return await this.prismaService.users.delete({
+  async remove(userId: string): Promise<ResponseUserDto> {
+    const removedUser: ResponseUserDto = await this.prismaService.users.delete({
       where: { userId },
     });
+    return removedUser;
   }
 }
