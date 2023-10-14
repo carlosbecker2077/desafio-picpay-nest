@@ -25,3 +25,7 @@
     [] tem que ter saldo
     [] precisa subtrair de quem ta mandando e adicionar em quem ta recebendo
     [] e gravar a transação com essas informações na tabela de transações
+    [] tratar os erros e jogar de volta um status http correspondente de modo que não tranque a aplicação caso o usuário seja lojista ou não tenha saldo.
+[] definir o nome que eu vou usar para lojista e cliente
+[] criar um enum e colocar no class-validator do create
+[] todas as validações devem ser feitas utilizando o enum e não string
