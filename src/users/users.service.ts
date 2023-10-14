@@ -34,7 +34,6 @@ export class UsersService {
   }
   
   async createTransaction(senderId: string, receiverId: string, amount: number) {
-    const {amount} = amount;
     console.log(amount)
     const isLojista = await this.findOne(senderId);
     if (isLojista.type === 'lojista') {

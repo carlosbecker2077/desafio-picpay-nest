@@ -15,7 +15,9 @@
 [] adicionar validação no fluxo de atualização do usuário
 [x] adicionar compressão
 [x] desabilitar o powered by
-[] ver pq não da mais pra atualizar o usuario (coisa com o class validator)
+[x] ver pq não da mais pra atualizar o usuario (coisa com o class validator)
+    teve algum problema com as dependencias e ele não deixa mais fazer um parcial do create, fui obrigado a passar o body todo. O que claramente não é o melhor jeito pq eu to passando até o password do cara na parada
+    em todos os outros projetos que fiz funcionar perfeitamente, mas nesse em específico não deu certo. Tive que instalar uma versão mais antiga do class-validator e class-transformer, caso contrário dava um aviso no bootstrap do nest.
 [] criar rota para transferir dinheiro entre os usuarios
     [] criar repository de transação
         [] acho que pode ser legal criar um crud só pra ter

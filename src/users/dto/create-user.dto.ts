@@ -6,25 +6,25 @@ export class CreateUserDto {
   
   @IsNotEmpty()
   @IsString() 
-  document: string;
+  public document: string;
 
   @IsString() 
   @IsNotEmpty()
-  email: string;
+  public email: string;
 
   @IsString() 
   @IsNotEmpty()
-  password: string;
+  public password: string;
 
   @IsString() 
   @IsNotEmpty()
-  phone: string;
+  public phone: string;
   
   @IsNotEmpty()
   @IsNumber()
-  balance: number;
+  public balance: number;
 
   @IsString() 
   @IsNotEmpty()
-  type: string;
+  public type: string;
 }
