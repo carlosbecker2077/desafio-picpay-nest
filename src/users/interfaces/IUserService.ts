@@ -9,3 +9,5 @@ export interface IUsersService {
   update(userId: string, userUpdateDto: UpdateUserDto): Promise<ResponseUserDto>;
   remove(userId: string): Promise<ResponseUserDto>;
 }
+
+export const IUsersService = Symbol("IUsersService");

@@ -1,27 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { IUsersService } from 'src/users/interfaces/IUserService';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 
 @Injectable()
 export class TransactionsService {
-  create(createTransactionDto: CreateTransactionDto) {
-    const isLojista = await this.findOne(senderId);
+  constructor(
+
+    @Inject(IUsersService) private readonly userService: IUsersService,
+  ) {};
+  async create(createTransactionDto: CreateTransactionDto) {
+    const isLojista = await this.userService.findOne(createTransactionDto.senderId);
     if (isLojista.type === 'lojista') {
       throw new Error('é lojista');
     }
 
-    if (isLojista.balance < amount) {
+    if (isLojista.balance < createTransactionDto.amount) {
       throw new Error('não tem saldo');
     }
 
-    const targetUser = await this.findOne(receiverId);
+    const targetUser = await this.userService.findOne(createTransactionDto.receiverId);
 
 
-    isLojista.balance = isLojista.balance - amount;
+    isLojista.balance = isLojista.balance - createTransactionDto.amount;
     console.log('DINHEIRO SAINDO', isLojista.balance)
-    targetUser.balance = targetUser.balance + amount
+    targetUser.balance = targetUser.balance + createTransactionDto.amount
     console.log('DINHEIRO ENTRANDO', targetUser.balance)
-    await this.update(senderId, isLojista);
-    await this.update(receiverId, targetUser); 
+    await this.userService.update(createTransactionDto.senderId, isLojista);
+    await this.userService.update(createTransactionDto.receiverId, targetUser); 
   }
 
 }

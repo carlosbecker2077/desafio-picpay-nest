@@ -4,7 +4,6 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { IUsersRepository } from 'src/infra/repositories/interfaces/IUserRepository';
 import { UserHelper } from './helpers/UserHelper';
 import { ResponseUserDto } from './dto/response-user.dto';
-
 @Injectable()
 export class UsersService {
   constructor(

@@ -42,12 +42,4 @@ export class UsersController {
   remove(@Param('userId') userId: string) {
     return this.usersService.remove(userId);
   }
-
-  @Patch('transaction/:senderId/:receiverId')
-  createTransaction(
-    @Param('senderId') senderId: string,
-    @Param('receiverId') receiverId: string,
-    @Body('amount') amount: number) {
-    this.usersService.createTransaction(senderId, receiverId, amount)
-  }
 }
