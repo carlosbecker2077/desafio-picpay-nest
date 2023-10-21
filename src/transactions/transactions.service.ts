@@ -1,12 +1,14 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { IUsersService } from 'src/users/interfaces/IUserService';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
+import { ITransactionsRepository } from 'src/infra/repositories/interfaces/ITransactionsRepository';
 
 @Injectable()
 export class TransactionsService {
   constructor(
 
     @Inject(IUsersService) private readonly userService: IUsersService,
+    @Inject(ITransactionsRepository) private readonly transactionsRepository: ITransactionsRepository,
   ) {};
   async create(createTransactionDto: CreateTransactionDto) {
     const isLojista = await this.userService.findOne(createTransactionDto.senderId);
@@ -27,6 +29,8 @@ export class TransactionsService {
     console.log('DINHEIRO ENTRANDO', targetUser.balance)
     await this.userService.update(createTransactionDto.senderId, isLojista);
     await this.userService.update(createTransactionDto.receiverId, targetUser); 
+
+    await this.transactionsRepository.create(createTransactionDto)
   }
 
 }

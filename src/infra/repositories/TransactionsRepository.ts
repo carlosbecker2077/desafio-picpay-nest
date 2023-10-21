@@ -3,13 +3,14 @@ import { Transactions } from "@prisma/client";
 import { ResponseTransactionDto } from "src/transactions/dto/response-transaction.dto";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ITransactionsRepository } from "./interfaces/ITransactionsRepository";
+import { CreateTransactionDto } from "src/transactions/dto/create-transaction.dto";
 
 @Injectable()
 export class TransactionsRepository implements ITransactionsRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
 
-  async create(data: Transactions): Promise<ResponseTransactionDto> {
+  async create(data: CreateTransactionDto): Promise<ResponseTransactionDto> {
     const createdTransaction: ResponseTransactionDto = await this.prismaService.transactions.create({ data });
     return createdTransaction;
   }
