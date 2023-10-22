@@ -49,8 +49,18 @@ export class UserRepository implements IUsersRepository {
         name: data.name,
         email: data.email,
         phone: data.phone,
-        balance: data.balance,
         type: data.type,
+      },
+    });
+    delete user.password;
+    return user;
+  }
+
+  async updateBalance(userId: string, data: Users): Promise<ResponseUserDto> {
+    const user = await this.prismaService.users.update({
+      where: { userId },
+      data: {
+        balance: data.balance,
       },
     });
     delete user.password;

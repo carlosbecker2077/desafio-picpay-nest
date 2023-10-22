@@ -17,6 +17,5 @@ import { IUsersService } from './interfaces/IUserService';
     { provide: IPasswordHasher, useClass: PasswordHashing },
     { provide: IUsersService, useClass: UsersService},
   ],
-  exports: [IUsersService]
 })
 export class UsersModule { }

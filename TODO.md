@@ -18,7 +18,7 @@
 [x] ver pq não da mais pra atualizar o usuario (coisa com o class validator)
     teve algum problema com as dependencias e ele não deixa mais fazer um parcial do create, fui obrigado a passar o body todo. O que claramente não é o melhor jeito pq eu to passando até o password do cara na parada
     em todos os outros projetos que fiz funcionar perfeitamente, mas nesse em específico não deu certo. Tive que instalar uma versão mais antiga do class-validator e class-transformer, caso contrário dava um aviso no bootstrap do nest.
-[] criar rota para transferir dinheiro entre os usuarios
+[x] criar rota para transferir dinheiro entre os usuarios
     [x] criar repository de transação
         [x] acho que pode ser legal criar um crud só pra ter
     [x] quem ta mandando não pode ser lojista
@@ -27,5 +27,5 @@
     [x] e gravar a transação com essas informações na tabela de transações
     [] tratar os erros e jogar de volta um status http correspondente de modo que não tranque a aplicação caso o usuário seja lojista ou não tenha saldo.
 [x] definir o nome que eu vou usar para lojista e cliente
-[] criar um enum e colocar no class-validator do create
-[] todas as validações devem ser feitas utilizando o enum e não string
+[x] criar um enum e colocar no class-validator do create
+[x] todas as validações devem ser feitas utilizando o enum e não string
