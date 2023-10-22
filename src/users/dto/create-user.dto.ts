@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { UserTypeEnum } from '../helpers/UserTypeEnum';
 export class CreateUserDto {
   @IsString() 
   @IsNotEmpty()
@@ -24,7 +25,7 @@ export class CreateUserDto {
   @IsNumber()
   public balance: number;
 
-  @IsString() 
+  @IsEnum(UserTypeEnum)
   @IsNotEmpty()
   public type: string;
 }

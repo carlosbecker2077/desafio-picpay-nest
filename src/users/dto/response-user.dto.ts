@@ -1,3 +1,5 @@
+import { UserTypeEnum } from "../helpers/UserTypeEnum";
+
 export class ResponseUserDto {
   userId: string;
   name: string;

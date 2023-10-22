@@ -1,6 +1,5 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -32,3 +31,4 @@ model Transactions {
   receiverId String
   createdDate DateTime @default(now())
 }
+
