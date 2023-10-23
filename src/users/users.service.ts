@@ -26,19 +26,28 @@ export class UsersService {
     return await this.usersRepository.create(data);
   }
 
-  findAll(): Promise<ResponseUserDto[]> {
+  async findAll(): Promise<ResponseUserDto[]> {
     return this.usersRepository.findAll();
   }
 
-  findOne(userId: string): Promise<ResponseUserDto> {
+  async findOne(userId: string): Promise<ResponseUserDto> {
     return this.usersRepository.findOne(userId);
   }
 
-  update(userId: string, updateUserDto: UpdateUserDto): Promise<ResponseUserDto> {
+  async update(userId: string, updateUserDto: UpdateUserDto): Promise<ResponseUserDto> {
+    const userMailExists = await this.usersRepository.findOneEmail(updateUserDto.email);
+    if (userMailExists) {
+      throw new HttpException(`Email already registred`, 400);
+    }
+
+    const userDocumentExists = await this.usersRepository.findOneDocument(updateUserDto.document);
+    if (userDocumentExists) {
+      throw new HttpException(`Document already registred`, 400);
+    }
     return this.usersRepository.update(userId, updateUserDto);
   }
 
-  remove(userId: string): Promise<ResponseUserDto> {
+  async remove(userId: string): Promise<ResponseUserDto> {
     return this.usersRepository.remove(userId);
   }
 }

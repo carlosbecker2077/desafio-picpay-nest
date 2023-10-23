@@ -12,7 +12,7 @@
 [x] criar um filter de erros para o prisma
 [x] adicionar validação de classe na criação e atualização
 [x] adicionar validação no fluxo de cadastro do usuario
-[] adicionar validação no fluxo de atualização do usuário
+[x] adicionar validação no fluxo de atualização do usuário
 [x] adicionar compressão
 [x] desabilitar o powered by
 [x] ver pq não da mais pra atualizar o usuario (coisa com o class validator)
@@ -25,7 +25,7 @@ em todos os outros projetos que fiz funcionar perfeitamente, mas nesse em espec�
 [x] tem que ter saldo
 [x] precisa subtrair de quem ta mandando e adicionar em quem ta recebendo
 [x] e gravar a transação com essas informações na tabela de transações
-[] tratar os erros e jogar de volta um status http correspondente de modo que não tranque a aplicação caso o usuário seja lojista ou não tenha saldo.
+[x] tratar os erros e jogar de volta um status http correspondente de modo que não tranque a aplicação caso o usuário seja lojista ou não tenha saldo.
 [x] definir o nome que eu vou usar para lojista e cliente
 [x] criar um enum e colocar no class-validator do create
 [x] todas as validações devem ser feitas utilizando o enum e não string
