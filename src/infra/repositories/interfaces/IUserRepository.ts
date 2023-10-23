@@ -6,6 +6,8 @@ export interface IUsersRepository {
   create(data: Users): Promise<ResponseUserDto>;
   findAll(): Promise<ResponseUserDto[]>;
   findOne(userId: string): Promise<ResponseUserDto>;
+  findOneEmail(email: string): Promise<ResponseUserDto>;
+  findOneDocument(document: string): Promise<ResponseUserDto>;
   update(userId: string, data: UpdateUserDto): Promise<ResponseUserDto>;
   updateBalance(userId: string, data: UpdateUserDto): Promise<ResponseUserDto>;
   remove(userId: string): Promise<ResponseUserDto>;

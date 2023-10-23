@@ -42,6 +42,37 @@ export class UserRepository implements IUsersRepository {
     });
   }
 
+  async findOneEmail(email: string): Promise<ResponseUserDto> {
+     return await this.prismaService.users.findUniqueOrThrow({
+      where: { email },
+      select: {
+        userId: true,
+        name: true,
+        document: true,
+        email: true,
+        phone: true,
+        balance: true,
+        type: true,
+      }
+    });
+  }
+
+  async findOneDocument(document: string): Promise<ResponseUserDto> {
+     return await this.prismaService.users.findUniqueOrThrow({
+      where: { document },
+      select: {
+        userId: true,
+        name: true,
+        document: true,
+        email: true,
+        phone: true,
+        balance: true,
+        type: true,
+      }
+    });
+
+  }
+
   async update(userId: string, data: Users): Promise<ResponseUserDto> {
     const user = await this.prismaService.users.update({
       where: { userId },

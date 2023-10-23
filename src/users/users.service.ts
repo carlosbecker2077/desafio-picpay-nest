@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUsersRepository } from 'src/infra/repositories/interfaces/IUserRepository';
@@ -12,6 +12,16 @@ export class UsersService {
     @Inject(UserHelper) private readonly userHelper: UserHelper,
   ) { }
   async create(createUserDto: CreateUserDto): Promise<ResponseUserDto> {
+    const userMailExists = await this.usersRepository.findOneEmail(createUserDto.email);
+    if (userMailExists) {
+      throw new HttpException(`Email already registred`, 400);
+    }
+
+    const userDocumentExists = await this.usersRepository.findOneDocument(createUserDto.document);
+    if (userDocumentExists) {
+      throw new HttpException(`Document already registred`, 400);
+    }
+
     const data = await this.userHelper.userObjectBuilder(createUserDto);
     return await this.usersRepository.create(data);
   }
